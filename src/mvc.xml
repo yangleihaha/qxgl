@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+		<mvc>
+			<constants >
+				<constant name="encoding" value="utf-8"  />
+				<constant name="suffix" value="action" />
+			</constants>
+			
+			<actions>
+				<!--  <action name="t1" class="com.action.TestAction" method="t1">
+					<aop class="org.xiudun.mvc.aop.FileUploadAop" />
+					<aop class="org.xiudun.mvc.aop.ParamsAop" />
+					<result name="success" type="dispatcher" > main.jsp</result>
+					<result name="error" type="redirect" > login.jsp</result>
+				</action>-->
+				<action name="findAllFun" class="com.xiudun.funAction.FunAction" method="findAllFun">
+				</action>
+				<action name="savef" class="com.xiudun.funAction.FunAction" method="savef">
+					<aop class="org.xiudun.mvc.aop.ParamsAop" />
+				</action>
+				
+				<action name="parentFunctions" class="com.xiudun.funAction.FunAction" method="parentFunctions">
+				</action>
+				<action name="savez" class="com.xiudun.funAction.FunAction" method="savez">
+					<aop class="org.xiudun.mvc.aop.ParamsAop" />
+				</action>
+				
+				<action name="linkFunctions" class="com.xiudun.funAction.FunAction" method="linkFunctions">
+					<aop class="org.xiudun.mvc.aop.ParamsAop" />
+				</action>
+				
+				<action name="saveRoleFunctions" class="com.xiudun.funAction.FunAction" method="saveRoleFunctions">
+					<aop class="org.xiudun.mvc.aop.ParamsAop" />
+				</action>
+				
+				<action name="currentFunctions" class="com.xiudun.funAction.FunAction" method="currentFunctions">
+				</action>
+				
+				<action name="updateParentFun" class="com.xiudun.funAction.FunAction" method="updateParentFun">
+					<aop class="org.xiudun.mvc.aop.ParamsAop" />
+				</action>
+			</actions>
+		</mvc>

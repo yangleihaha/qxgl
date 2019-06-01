@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+	<head>
+		<style type="text/css">
+			.box{
+				width: 50px;
+				height: 50px;
+				background: yellow;
+				border: 2px solid pink;
+				border-radius:20px;
+				position: absolute;
+				left:0px;
+				top:80px;
+			}
+			#win{
+				width: 200px;
+				height: 350px;
+				background: yellow;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+			#bar{
+				height:50px;
+				background: pink;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function () {
+				  var provinces = [
+					{
+						name:'ºÚÁú½­',
+						city:[
+							'ºÚA','ºÚB','ºÚC'
+						]
+					},
+					{
+						name:'¼ªÁÖ',
+						city:[
+							'¼ªA','¼ªB','¼ªC'
+						]
+					},
+					{
+						name:'ÁÉÄþ',
+						city:[
+							'ÁÉA','ÁÉB','ÁÉC'
+						]
+					}
+				];
+				var select = document.getElementById('sa');
+				sa.onchange = function () {
+					for(var i=0;i<provinces.length;i++){
+						if(provinces[i].name == select.value){
+							var citys = provinces[i].city;
+							var select2 = document.getElementById('sb');
+							select2.innerHTML = '';
+							for(var j=0;j<citys.length;j++){
+								var option = document.createElement('option');
+								option.innerHTML = citys[j];
+								select2.appendChild(option);
+							}
+						}
+					}
+				}
+				
+				var timer;
+				var start = document.getElementById('start');
+				var stop = document.getElementById('stop');
+				start.onclick = function () {
+					var box = document.getElementById('box');
+					var i = 20;
+					timer = window.setInterval(function () {
+						var style = getComputedStyle(box,false);
+						var left = style.left;
+						left = parseInt(left);
+						left+=i;
+						box.style.left = left+'px';
+						if(left>=window.innerWidth-50){
+							i=-20;
+						}
+						if(left <= 0){
+							i = 20;
+						}
+					},10);
+				}
+				
+				stop.onclick = function () {
+					window.clearInterval(timer);
+				}
+				
+				
+				
+				
+				var bar = document.getElementById('bar');
+				bar.onmousedown = function () {
+					var x = event.clientX;
+					var y = event.clientY;
+					document.onmousemove = function () {
+						var nx = event.clientX;
+						var ny = event.clientY;
+						var h = nx-x;
+						var v = ny-y;
+						var win = document.getElementById('win');
+						var style = getComputedStyle(win,false);
+						var left = style.left;
+						var top = style.top;
+						left = parseInt(left);
+						top = parseInt(top);
+						left+=h;
+						top+=v;
+						win.style.left = left+'px';
+						win.style.top = top+'px';
+						
+						x=nx;
+						y=ny;
+						
+					}
+				}
+				document.onmouseup = function () {
+					document.onmousemove = null;
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<select id="sa">
+			<option>ÇëÑ¡Ôñ</option>
+			<option>ºÚÁú½­</option>
+			<option>¼ªÁÖ</option>
+			<option>ÁÉÄþ</option>
+		</select>
+		
+		<select id="sb">
+		</select>
+		<hr/>
+		<div class="box" id="box"></div>
+		<button id="start">¿ªÊ¼</button>
+		<button id="stop">½áÊø</button><br/><br/><br/><br/><br/>
+		<hr/>
+		<div id="win">
+			<div id="bar">
+			
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
