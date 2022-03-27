@@ -19,6 +19,7 @@ import com.xiudun.domain.User;
  */
 public class Dao extends BaseDao {
 	public User findByNameAndPass(String cname,String cpass) {
+		// bbbbbbbbbbbbbb
 		String sql = "select * from tb_user where cname=? and cpass=?";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
